@@ -2,7 +2,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>Find your GitHub user id</title>
+    <title>Temukan Github ID</title>
 
     <style type="text/css" media="screen">
       body {
@@ -54,10 +54,6 @@
       });
     }
 
-    function add_twitter_link_for (username, id) {
-      var tweet = $('<a>').text("Tweet this").attr('href', "https://twitter.com?status=" + encodeURIComponent("Found out I'm GitHub user " + id + " by using http://caius.github.com/github_id/#" + username + " #GitHub_id")).insertAfter("#success h1")
-    }
-
     function show_user (username, id) {
       $('#username').text(username)
       $('#id').text(id)
@@ -68,11 +64,9 @@
     $(document).ready(function() {
 
       if (document.location.hash) {
-        // $('form p').show()
         var name = document.location.hash.match(/^#(.*?)$/)[1]
         get_github_id_for(name, function(username, id) {
           show_user(username, id)
-          // $('form p').hide()
           $('form h1').hide()
           $('form').show()
         })
@@ -85,7 +79,6 @@
         var name = $("#github_username").val().trim()
 
         get_github_id_for(name, function(username, id) {
-          add_twitter_link_for(username, id)
           show_user(username, id)
           document.location.hash = "#" + username
         })
@@ -111,21 +104,21 @@
   <body>
 
     <div id="success">
-      <h1><span id="username"></span> is GitHub user #<span id="id"></span></h1>
+      <h1><span id="username"></span> adalah pengguna Github #<span id="id"></span></h1>
     </div>
 
     <form id="input" action="#" accept-charset="utf-8">
-      <h1>Find GitHub User ID</h1>
+      <h1>Temukan Github ID</h1>
       <input type="text" name="github_username" id="github_username" placeholder="GitHub Username" />
 
       <br />
-      <input type="submit" value="Find id &rarr;" />
-      <p>Finding&hellip;</p>
+      <input type="submit" value="Temukan ID &rarr;" />
+      <p>Mencari&hellip;</p>
     </form>
 
 
     <div id="footer">
-      <p>A hack born out of idle curiosity by GitHub user #696: <a href="http://caius.name/">Caius Durling</a></p>
+      <p>Digagas oleh pengguna GitHub #696: <a href="http://caius.name/">Caius Durling</a></p>
     </div>
   </body>
 </html>
